@@ -1,3 +1,4 @@
 import { logger, morganMiddleware } from "./logging";
+import { configManager } from "./configManagement";
 
-export { logger, morganMiddleware };
+export { logger, morganMiddleware, configManager };

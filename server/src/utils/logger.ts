@@ -1,3 +1,4 @@
+import { ILogger } from "../interfaces";
 import { logger } from "../libs";
 
 class Logger implements ILogger {
