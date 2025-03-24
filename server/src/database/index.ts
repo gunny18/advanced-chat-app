@@ -1,3 +1,3 @@
-import ConnectionManager from "./connection";
+import DatabaseManager from "./manager";
 
-export { ConnectionManager };
+export { DatabaseManager };

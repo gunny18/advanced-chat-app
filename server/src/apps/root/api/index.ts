@@ -1,7 +1,12 @@
 import { Router } from "express";
 import { IRequiredServers, IRootRouter } from "../../../interfaces";
 import { ApiError, AppConfigManager } from "../../../utils";
-import { errorHandler, parseCors, parseJson } from "./middlewares";
+import {
+  errorHandler,
+  parseCookies,
+  parseCors,
+  parseJson,
+} from "./middlewares";
 import RootRouter from "./routes";
 
 export class RootApi {
@@ -27,6 +32,7 @@ export class RootApi {
     //middlewares
     app.use(parseJson());
     app.use(parseCors());
+    app.use(parseCookies());
 
     // fetch version and app name
     const version = AppConfigManager.get("version");

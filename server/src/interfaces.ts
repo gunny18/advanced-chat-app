@@ -43,3 +43,7 @@ export interface IRouter {
 export interface IRootRouter extends IRouter {
   registerRouter(path: string, router: Router): void;
 }
+
+export interface IDatabaseManager {
+  init(): Promise<void>;
+}

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, json } from "express";
+import { json } from "express";
 
 function parseJson() {
   const jsonMiddlewareFn = json();

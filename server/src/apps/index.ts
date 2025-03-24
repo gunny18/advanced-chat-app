@@ -1,4 +1,4 @@
-import { ConnectionManager } from "../database";
+import { DatabaseManager } from "../database";
 import { IRequiredServers } from "../interfaces";
 import AuthApplication from "./auth";
 import RootApplication from "./root";
@@ -17,7 +17,8 @@ async function initApplications(servers: IRequiredServers) {
 
   // TODO: can be moved else where
   // start services like DB, AWS, etc and other external, persitant services if any!
-  await ConnectionManager.initDatabaseConnection();
+  const dbManager = new DatabaseManager();
+  await dbManager.init();
 }
 
 export default initApplications;
