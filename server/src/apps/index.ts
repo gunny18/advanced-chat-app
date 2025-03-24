@@ -1,13 +1,20 @@
+import { ConnectionManager } from "../database";
 import { IRequiredServers } from "../interfaces";
-import RootApplication from "./general";
+import AuthApplication from "./auth";
+import RootApplication from "./root";
 
 // inits all apps
-function initApplications(servers: IRequiredServers) {
+async function initApplications(servers: IRequiredServers) {
   const rootApplication = new RootApplication(servers);
 
-  // define other apps and merge with root app
+  const authApplication = new AuthApplication(servers);
+  rootApplication.registerSubAppApi(authApplication.init());
 
+  // define other apps and merge with root app
   rootApplication.init();
+
+  // start DB connections, once all routes are setup
+  await ConnectionManager.initDatabaseConnection();
 }
 
 export default initApplications;

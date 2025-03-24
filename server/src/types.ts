@@ -5,3 +5,5 @@ export type RequestHandlerType = (
   res: Response,
   next: NextFunction
 ) => void;
+
+export type AllowedTypeormDatabaseType = "postgres" | "mysql";

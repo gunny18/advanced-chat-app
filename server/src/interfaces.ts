@@ -10,7 +10,7 @@ export interface ILogger {
 
 export interface IApiResponse {
   statusCode: number;
-  data: Record<string, unknown> | void | undefined | null;
+  data: unknown;
   message: string;
 }
 

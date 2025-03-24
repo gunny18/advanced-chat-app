@@ -1,4 +1,12 @@
 {
   "version": "1.0",
-  "name": "chatify"
+  "name": "chatify",
+  "database": {
+    "type": "postgres",
+    "host": "localhost",
+    "name": "chatifyDB",
+    "port": 5432,
+    "synchronize": false,
+    "logging": false
+  }
 }

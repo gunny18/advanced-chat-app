@@ -13,7 +13,6 @@ import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 
-
 // server inits
 async function initServer() {
   const httpServer = express();
@@ -23,7 +22,7 @@ async function initServer() {
     cors: {},
   });
 
-  initApplications({ httpServer, socketServer });
+  await initApplications({ httpServer, socketServer });
 
   const port = AppConfigManager.get("port");
 
