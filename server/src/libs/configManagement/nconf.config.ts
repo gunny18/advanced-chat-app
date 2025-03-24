@@ -1,16 +1,14 @@
-import path from "node:path";
-import { PROJECT_CONFIG_PATH } from "../../constants";
-
-import dotenv from "dotenv";
-dotenv.config({ path: path.join(globalThis.PROJECT_ROOT_PATH, ".env") });
-
+import { PROJECT_CONFIG_PATH, PROJECT_ENV_PATH } from "../../constants";
 import configManager from "nconf";
 
-configManager.env({
-  lowercase: true,
-  parseValues: true,
-});
+import dotenv from "dotenv";
+dotenv.config({ path: PROJECT_ENV_PATH });
 
-configManager.file({ file: PROJECT_CONFIG_PATH });
+configManager
+  .env({
+    lowerCase: true,
+    parseValues: true,
+  })
+  .file({ file: PROJECT_CONFIG_PATH });
 
 export default configManager;

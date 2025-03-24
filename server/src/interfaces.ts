@@ -1,4 +1,5 @@
 import { Server } from "socket.io";
+import { Application, Router } from "express";
 
 export interface ILogger {
   info(message: string): void;
@@ -9,7 +10,7 @@ export interface ILogger {
 
 export interface IApiResponse {
   statusCode: number;
-  data: Record<string, unknown> | null;
+  data: Record<string, unknown> | void | undefined | null;
   message: string;
 }
 
@@ -18,7 +19,7 @@ export interface IConfigManager {
 }
 
 export interface IRequiredServers {
-  httpServer: Express.Application;
+  httpServer: Application;
   socketServer: Server;
 }
 
@@ -32,4 +33,13 @@ export interface IApi {}
 export interface IApplication {
   api: IApi;
   init(servers: IRequiredServers): Promise<void>;
+}
+
+export interface IRouter {
+  initRouter(): void;
+  fetchRouter(): Router;
+}
+
+export interface IRootRouter extends IRouter {
+  registerRouter(path: string, router: Router): void;
 }
