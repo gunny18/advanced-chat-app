@@ -25,8 +25,8 @@ export class RootApi {
     const rootRouter = this.rootRouter;
 
     //middlewares
-    app.use(parseJson);
-    app.use(parseCors);
+    app.use(parseJson());
+    app.use(parseCors());
 
     // fetch version and app name
     const version = AppConfigManager.get("version");

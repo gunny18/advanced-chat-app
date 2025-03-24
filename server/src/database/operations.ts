@@ -1,8 +1,4 @@
-import {
-  EntityTarget,
-  Repository,
-  FindOptionsWhere,
-} from "typeorm";
+import { EntityTarget, Repository, FindOptionsWhere } from "typeorm";
 import ConnectionManager from "./connection";
 import { ApiError } from "../utils";
 
@@ -14,7 +10,8 @@ abstract class CommonDatabaseOperations<Entity extends NamedThing> {
   protected repository: Repository<Entity>;
 
   constructor(target: EntityTarget<Entity>) {
-    this.repository = ConnectionManager.AppDataSource.getRepository(target);
+    const datasource = ConnectionManager.fetchAppDataSource();
+    this.repository = datasource.getRepository(target);
   }
 
   getFindWhereConditions(conditions?: Record<string, any>) {

@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import cors from "cors";
 
-function parseCors(req: Request, res: Response, next: NextFunction) {
-  cors();
-  next();
-  return;
+function parseCors() {
+  const corsMiddlewareFn = cors();
+  return corsMiddlewareFn;
 }
 
 export default parseCors;

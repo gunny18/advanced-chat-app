@@ -9,8 +9,15 @@ class AuthRouterActions {
   }
 
   async signUp(req: Request, res: Response, next: NextFunction) {
-    const version = await this.authController.signUp();
-    res.status(200).json(new ApiResponse(200, version));
+    const { fullName, username, password, gender } = req.body;
+    const user = await this.authController.signUp({
+      fullName,
+      username,
+      password,
+      gender,
+    });
+
+    res.status(200).json(new ApiResponse(200, user));
     return;
   }
 

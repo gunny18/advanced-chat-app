@@ -15,6 +15,11 @@ class ConnectionManager {
       AppLogger.info("Connected to database");
     }
   }
+
+  static fetchAppDataSource() {
+    ConnectionManager.initDatabaseConnection();
+    return ConnectionManager.AppDataSource;
+  }
 }
 
 export default ConnectionManager;

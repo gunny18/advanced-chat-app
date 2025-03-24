@@ -5,15 +5,18 @@ import RootApplication from "./root";
 
 // inits all apps
 async function initApplications(servers: IRequiredServers) {
+  // define the root application
   const rootApplication = new RootApplication(servers);
 
+  // define other apps and merge with root app
   const authApplication = new AuthApplication(servers);
   rootApplication.registerSubAppApi(authApplication.init());
 
-  // define other apps and merge with root app
+  // initialize the root app after the other apps are merged with root app
   rootApplication.init();
 
-  // start DB connections, once all routes are setup
+  // TODO: can be moved else where
+  // start services like DB, AWS, etc and other external, persitant services if any!
   await ConnectionManager.initDatabaseConnection();
 }
 
