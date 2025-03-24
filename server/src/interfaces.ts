@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import { Application, Router } from "express";
+import { EntityTarget } from "typeorm";
 
 export interface ILogger {
   info(message: string): void;

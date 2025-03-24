@@ -6,7 +6,7 @@
     "host": "localhost",
     "name": "chatifyDB",
     "port": 5432,
-    "synchronize": false,
+    "synchronize": true,
     "logging": false
   }
 }
