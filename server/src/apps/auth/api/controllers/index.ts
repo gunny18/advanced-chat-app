@@ -1,5 +1,5 @@
-import { DatabaseManager } from "../../../../database";
-import { UserDatabaseOperations } from "../../database/operations";
+import PersistantServicesInstance from "../../../../services";
+import { UserDatabaseOperations } from "../../database";
 import {
   generateHashedPasswod,
   getGenderBasedRandomProfileUrlBasedOnUsername,
@@ -9,7 +9,8 @@ class AuthController {
   private userDatabaseOperations: UserDatabaseOperations;
 
   constructor() {
-    this.userDatabaseOperations = DatabaseManager.operations.user;
+    this.userDatabaseOperations =
+      PersistantServicesInstance.databaseOperations.user;
   }
 
   async signUp(signUpData: Record<string, any>) {
@@ -21,11 +22,13 @@ class AuthController {
     const createdUser = await this.userDatabaseOperations.create(signUpData);
     return createdUser;
   }
+
   login() {
     return new Promise((resolve, reject) => {
       resolve("Log in");
     });
   }
+  
   logout() {}
 }
 

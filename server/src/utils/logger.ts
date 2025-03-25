@@ -2,8 +2,9 @@ import { ILogger } from "../interfaces";
 import { logger } from "../libs";
 
 class Logger implements ILogger {
+
   private _logger: typeof logger;
-  static _uniqueLogger: ILogger;
+  private static _uniqueLogger: ILogger;
 
   private constructor() {
     this._logger = logger;
@@ -31,6 +32,7 @@ class Logger implements ILogger {
   error(message: string): void {
     this._logger.error(message);
   }
+
 }
 
 const AppLogger = Logger.getLogger();

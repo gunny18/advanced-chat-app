@@ -3,7 +3,7 @@ import { configManager } from "../libs";
 
 class ConfigManager implements IConfigManager {
   private _configManager: typeof configManager;
-  static uniqueInstance: IConfigManager;
+  private static uniqueInstance: IConfigManager;
 
   private constructor() {
     this._configManager = configManager;

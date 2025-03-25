@@ -1,4 +1,3 @@
-import { DatabaseManager } from "../database";
 import { IRequiredServers } from "../interfaces";
 import AuthApplication from "./auth";
 import RootApplication from "./root";
@@ -14,11 +13,6 @@ async function initApplications(servers: IRequiredServers) {
 
   // initialize the root app after the other apps are merged with root app
   rootApplication.init();
-
-  // TODO: can be moved else where
-  // start services like DB, AWS, etc and other external, persitant services if any!
-  const dbManager = new DatabaseManager();
-  await dbManager.init();
 }
 
 export default initApplications;

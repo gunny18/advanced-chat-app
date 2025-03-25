@@ -12,6 +12,7 @@ import initApplications from "./apps";
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import PersistantServicesInstance from "./services";
 
 // server inits
 async function initServer() {
@@ -21,6 +22,8 @@ async function initServer() {
   const socketServer = new Server(server, {
     cors: {},
   });
+
+  await PersistantServicesInstance.init();
 
   await initApplications({ httpServer, socketServer });
 

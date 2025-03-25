@@ -1,4 +1,4 @@
-import CommonDatabaseOperations from "../../../../database/operations";
+import CommonDatabaseOperations from "../../../../database/commonOperations";
 import { User } from "../entities";
 
 // @ts-ignore

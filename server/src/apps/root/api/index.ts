@@ -8,6 +8,7 @@ import {
   parseJson,
 } from "./middlewares";
 import RootRouter from "./routes";
+import { morganMiddleware } from "../../../libs";
 
 export class RootApi {
   private servers: IRequiredServers;
@@ -33,6 +34,9 @@ export class RootApi {
     app.use(parseJson());
     app.use(parseCors());
     app.use(parseCookies());
+
+    // httplogs
+    app.use(morganMiddleware);
 
     // fetch version and app name
     const version = AppConfigManager.get("version");
